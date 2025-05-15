@@ -25,7 +25,7 @@
 
 
 
-## RFs (Requisitos não-funcionais - Aquilo que o cliente não consegue controlar, requisitos técnicos)
+## RNFs (Requisitos não-funcionais - Aquilo que o cliente não consegue controlar, requisitos técnicos)
 
 - [ ] A senha do usuário precisa estar criptografada;
 - [ ] Os dados da aplicação precisam estar persistidos em um banco de dados PortgresSQL;
