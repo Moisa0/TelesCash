@@ -1,0 +1,26 @@
+{
+  "name": "telescash",
+  "version": "1.0.0",
+  "description": "- [ ] Deve ser possível se cadastrar;\r - [ ] Deve ser possível se autenticar;\r - [ ] Deve ser possível ( logado ) o próprio perfil;\r - [ ] Deve ser possível ( logado )listar as transações;\r - [ ] Deve ser possível ( logado ) listar as transações por categorias (alimentação, transporte, internet...);\r - [ ] Deve ser possível ( logado ) listar as transações por tipo (despesa ou crédito);\r - [ ] Deve ser possível ( logado ) cadastrar uma transação;\r - [ ] Deve ser possível ( logado ) exibir valor do saldo atual;\r - [ ] (ADMIN) Deve ser possível excluir um usuário;",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "5.0.1",
+    "@types/node": "22.15.18",
+    "tsup": "8.4.0",
+    "tsx": "4.19.4",
+    "typescript": "5.8.3"
+  },
+  "dependencies": {
+    "dotenv": "16.5.0",
+    "express": "5.1.0",
+    "zod": "3.24.4"
+  }
+}
