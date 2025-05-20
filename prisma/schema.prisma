@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,15 +7,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User{
-  id String @id @default(uuid())
-  name String
-  email String
-  password String
-  wallet Int
-  transation Int
+model User {
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  password_hash String
+  created_at    DateTime @default(now())
+  wallet        Int
+
+  transaction   Transaction[] // relacionamento 1-N
+  categories Category[] //relacionamento de 1-n
 
   @@map("users")
 }
 
+model Transaction {
+  id               String   @id @default(uuid())
+  name_transaction String
+  created_at       DateTime @default(now())
+  amount           Int
+  category         String
 
+
+
+
+  @@map("transactions")
+}
+
+model Category {
+  id String @id @default(uuid())
+  name String
+
+}
+
+enum Type{
+  credito
+  debito
+
+  @@map("type")
+}
