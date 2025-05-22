@@ -15,32 +15,36 @@ model User {
   created_at    DateTime @default(now())
   wallet        Int
 
-  transaction   Transaction[] // relacionamento 1-N
-  categories Category[] //relacionamento de 1-n
+  transactions Transaction[]
+  categories   Category[]
 
   @@map("users")
 }
 
 model Transaction {
-  id               String   @id @default(uuid())
-  name_transaction String
-  created_at       DateTime @default(now())
-  amount           Int
-  category         String
+  id         String   @id @default(uuid())
+  name       String
+  created_at DateTime @default(now())
+  amount     Int
+  category   String
+  type Type
 
-
-
+  //Se o usuário que faz uma transação, é preciso ter um campo para armazenar o id do usuario
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
   @@map("transactions")
 }
 
 model Category {
-  id String @id @default(uuid())
+  id   String @id @default(uuid())
   name String
 
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 }
 
-enum Type{
+enum Type {
   credito
   debito
 
