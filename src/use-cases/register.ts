@@ -1,5 +1,6 @@
 import { hash } from "bcryptjs"
 import { prisma } from "../lib/prisma"
+import { UserAlreadyExistsError } from "./errors/user-already-exists-error";
 
 
 
@@ -22,8 +23,7 @@ export async function registerUseCase({name, email, password, wallet}:registerUs
         })
 
         if(userWithSameEmail){
-            throw new Error('Email already exists.')
-        }
+            throw new UserAlreadyExistsError()
 
         await prisma.user.create({
             data:{
@@ -34,4 +34,5 @@ export async function registerUseCase({name, email, password, wallet}:registerUs
             }
         })
 
+}
 }

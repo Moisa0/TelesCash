@@ -1,8 +1,8 @@
 import { Request, Response } from "express"
 import { z } from "zod"
-import { prisma } from "../../lib/prisma"
-import { hash } from 'bcryptjs'
+
 import { registerUseCase } from "../../use-cases/register"
+import { UserAlreadyExistsError } from "../../use-cases/errors/user-already-exists-error"
 
 
 
@@ -20,7 +20,10 @@ export async function register(req:Request, res:Response){
     try {
         await registerUseCase({name, email, password, wallet})
     } catch (err) {
-        return res.status(409).send()
+        if(err instanceof UserAlreadyExistsError){
+            return res.status(409).send()
+        }
+        return res.status(500).send()
     }
 
     return res.status(201).send()
