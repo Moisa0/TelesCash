@@ -1,11 +1,18 @@
-import { hash } from "bcryptjs"
+import { compare, hash } from "bcryptjs"
 import { prisma } from "../lib/prisma"
+import { InvalidCredentialsError } from "./errors/invalid-credentials-error";
+import { User } from "@prisma/client";
 
 
 interface authenticationUseCaseRequest{
     email: string;
     password: string;
 }
+
+interface authenticationUseCase{
+    user: User
+}
+
 
 export async function authenticationUseCase({email, password}:authenticationUseCaseRequest){
     //buscar usuario no banco pelo email e verificar se a senha corresponde à do banco
@@ -16,6 +23,18 @@ const userSaved = await prisma.user.findUnique({
     }
 })
 
-      //  if(!userSaved){falta validações}
-                
+    if(!userSaved){//validation
+        throw new InvalidCredentialsError()
+    }
+
+    const doesPasswordMatches = await compare(password, userSaved.password_hash)
+
+    if(!doesPasswordMatches){//validation
+        throw new InvalidCredentialsError()
+    }
+
+    return{
+        userSaved
+    }
+
 }
