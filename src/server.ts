@@ -30,6 +30,7 @@ server.use((error: any, _req: Request, res: Response, next: NextFunction) => {
       errors: error.format() // Bem estruturado, útil para frontends
     });
   }
+  
 
   return res.status(500).json({ message: 'Internal server error' });
 });

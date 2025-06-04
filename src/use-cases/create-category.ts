@@ -2,17 +2,16 @@ import { prisma } from "../lib/prisma"
 import { User } from "@prisma/client";
 import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 
-
-interface GetUserProfileUseCaseRequest{
-    userId: string
+interface CreateCategoryRequest{
+    userId: string;
+    name: string;
 }
 
-
-
-interface GetUserProfileUseCase{
-    user: User
+interface CreateCategoryResponse{
+    categories: any;
 }
-export async function GetUserProfileUseCase({userId}:GetUserProfileUseCaseRequest){
+
+export async function CreateCategoryUseCase({userId, name}:CreateCategoryRequest){
 
     const userFound = await prisma.user.findUnique({
         where:{
@@ -24,7 +23,11 @@ export async function GetUserProfileUseCase({userId}:GetUserProfileUseCaseReques
         throw new ResourceNotFoundError()
     }
 
-    return {
-        userFound
-    }
+        //     await prisma.category.create({
+        //     data:{
+        //         name,
+
+        //     }
+        // })
+
 }

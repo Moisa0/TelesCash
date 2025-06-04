@@ -24,7 +24,7 @@ export async function registerUseCase({name, email, password, wallet}:registerUs
 
         if(userWithSameEmail){
             throw new UserAlreadyExistsError()
-
+        }
         await prisma.user.create({
             data:{
                 name,
@@ -34,5 +34,5 @@ export async function registerUseCase({name, email, password, wallet}:registerUs
             }
         })
 
-}
+
 }
