@@ -14,10 +14,11 @@ export async function register(req:Request, res:Response){
         wallet :z.number()
     })
     console.log("Dados recebidos:", req.body)
-    const {name, email, password, wallet} = registerBodySchema.parse(req.body)
+
 
 
     try {
+            const {name, email, password, wallet} = registerBodySchema.parse(req.body)
         await registerUseCase({name, email, password, wallet})
     } catch (err) {
         if(err instanceof UserAlreadyExistsError){

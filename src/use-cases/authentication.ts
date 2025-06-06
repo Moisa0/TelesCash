@@ -9,12 +9,12 @@ interface authenticationUseCaseRequest{
     password: string;
 }
 
-interface authenticationUseCase{
+interface AuthenticationUseCase{
     user: User
 }
 
 
-export async function authenticationUseCase({email, password}:authenticationUseCaseRequest){
+export async function AuthenticationUseCase({email, password}:authenticationUseCaseRequest){
     //buscar usuario no banco pelo email e verificar se a senha corresponde à do banco
 
 const userSaved = await prisma.user.findUnique({

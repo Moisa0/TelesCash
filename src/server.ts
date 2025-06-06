@@ -1,11 +1,11 @@
 
-import { env } from "./env";
 import express from 'express';
 import router from './http/routes';
 
 
 import { ZodError } from 'zod';
 import { Request, Response, NextFunction } from 'express';
+import { env } from './env';
 
 
 
@@ -24,6 +24,8 @@ server.listen(
 
 //---------------------------------------FORMATAR OS ERROS VINDOS DO ZOD
 server.use((error: any, _req: Request, res: Response, next: NextFunction) => {
+  console.error('🔥 Erro capturado pelo middleware:', error)
+
   if (error instanceof ZodError) {
     return res.status(400).json({
       message: 'Validation error',
