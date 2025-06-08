@@ -6,7 +6,7 @@ import { UserAlreadyExistsError } from "../../use-cases/errors/user-already-exis
 
 
 
-export async function register(req:Request, res:Response){
+export async function registerController(req:Request, res:Response){
     const registerBodySchema = z.object({
         name:z.string(),
         email: z.string().email(),

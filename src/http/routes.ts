@@ -1,30 +1,26 @@
 import  {Router} from 'express'
-import { register } from "./controllers/register.controller";
-import { createCategory } from './controllers/create-category';
+import { registerController } from "./controllers/register-controller";
+import { createCategoryController } from './controllers/create-category-controller';
 import { expressjwt } from 'express-jwt';
 import { env } from '../env';
-import { authenticate } from './controllers/authenticate';
+import { authenticationController } from './controllers/authentication-controller';
+import { getUserProfileController } from './controllers/get-user-profile-controller';
+import { authenticationMiddleware } from '../middlewares/authenticationMid';
 
 const router = Router()
 
 
 
-//AUTHENTICATION NOT REQUIRED
-router.post('/register', register)
-router.post('/login', authenticate)
+//AUTHENTICATION NOT REQUIRED ROUTES
+router.post('/register', registerController)
+router.post('/login', authenticationController)
 
+//AUTHENTICATION
+router.use(authenticationMiddleware)
 
-
-router.use(expressjwt({
-    secret:env.JWT_SECRET,
-    algorithms: ["HS256"],
-
-}))
-
-
-
-//AUTHENTICATION REQUIRED
-router.post('/category', createCategory)
+//AUTHENTICATION REQUIRED ROUTES
+router.post('/category',createCategoryController)
+router.get('/me', getUserProfileController)
 
 export default router
 

@@ -26,5 +26,6 @@ export async function GetUserProfileUseCase({userId}:GetUserProfileUseCaseReques
 
     return {
         userFound
+
     }
 }

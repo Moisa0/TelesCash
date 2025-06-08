@@ -5,7 +5,7 @@ import { CreateCategoryUseCase } from "../../use-cases/create-category"
 import { ResourceNotFoundError } from "../../use-cases/errors/resource-not-found-error"
 
 
-export async function createCategory(req:Request, res:Response){
+export async function createCategoryController(req:Request, res:Response){
     const registerBodySchema = z.object({
         name:z.string(),
         user_id:z.string()
