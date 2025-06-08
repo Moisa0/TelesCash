@@ -8,17 +8,14 @@ import { ResourceNotFoundError } from "../../use-cases/errors/resource-not-found
 export async function createCategoryController(req:Request, res:Response){
     const registerBodySchema = z.object({
         name:z.string(),
-        user_id:z.string()
-
-
 
     })
     console.log("Dados recebidos:", req.body)
 
-
+    const user_id = req.user.id
 
     try {
-            const {name,user_id} = registerBodySchema.parse(req.body)
+            const {name} = registerBodySchema.parse(req.body)
         await CreateCategoryUseCase({name, user_id})
     } catch (err) {
         if(err instanceof ResourceNotFoundError){

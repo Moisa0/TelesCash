@@ -16,7 +16,8 @@ export async function getUserProfileController(req:Request, res:Response){
 
     try {
 
-        return res.json(req.user)
+        const {name, email, wallet, created_at} = req.user
+        return res.json({name, email, wallet, created_at})
         
     } catch (err) {
         if(err instanceof UserAlreadyExistsError){

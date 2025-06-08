@@ -33,9 +33,7 @@ export const authenticationMiddleware = async (req: Request, res: Response, next
             throw new InvalidCredentialsError()
     }    
 
-    const {name, email, wallet, created_at} = userFound
-
-    req.user = {name, email, wallet, created_at}
+    req.user = userFound
     
     next()
 
