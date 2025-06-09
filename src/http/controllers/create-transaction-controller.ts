@@ -24,7 +24,7 @@ export async function createTransactionController(req:Request, res:Response){
         await CreateTransactionUseCase({name, user_id, amount, category, type})
     } catch (err) {
         if(err instanceof ResourceNotFoundError){
-            return res.status(404).send()
+            return res.status(404).json({ message: err.message })
         }
         return res.status(500).send()
     }

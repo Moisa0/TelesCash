@@ -21,7 +21,7 @@ export async function getUserProfileController(req:Request, res:Response){
         
     } catch (err) {
         if(err instanceof UserAlreadyExistsError){
-            return res.status(409).send()
+            return res.status(409).json({ message: err.message })
         }
         return res.status(500).send()
     }

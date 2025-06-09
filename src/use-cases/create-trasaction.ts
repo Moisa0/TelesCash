@@ -28,6 +28,10 @@ export async function CreateTransactionUseCase({name, amount, category, type, us
             throw new ResourceNotFoundError()
         }
     
+
+
+
+        
     
            const transaction= await prisma.transaction.create({
             data:{

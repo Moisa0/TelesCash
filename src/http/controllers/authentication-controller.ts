@@ -39,7 +39,7 @@ export async function authenticationController(req:Request, res:Response){
 
     } catch (err) {
         if(err instanceof InvalidCredentialsError){
-            return res.status(401).send()
+            return res.status(401).json({ message: err.message })
         }
         return res.status(500).send()
     }
