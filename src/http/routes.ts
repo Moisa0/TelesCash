@@ -18,7 +18,7 @@ router.post('/login', authenticationController)
 
 
 
-router.post('/transaction',createTransactionController)
+
 
 //AUTHENTICATION
 router.use(authenticationMiddleware)
@@ -29,6 +29,7 @@ router.use(authenticationMiddleware)
 //AUTHENTICATION REQUIRED ROUTES
 router.post('/category',createCategoryController)
 router.get('/me', getUserProfileController)
+router.post('/transaction',createTransactionController)
 
 export default router
 
