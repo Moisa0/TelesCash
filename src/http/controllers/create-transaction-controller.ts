@@ -3,11 +3,15 @@ import { z } from "zod"
 
 import { CreateCategoryUseCase } from "../../use-cases/create-category" 
 import { ResourceNotFoundError } from "../../use-cases/errors/resource-not-found-error"
+import { CreateTransactionUseCase } from "../../use-cases/create-trasaction"
 
 
-export async function createCategoryController(req:Request, res:Response){
+export async function createTransactionController(req:Request, res:Response){
     const registerBodySchema = z.object({
         name:z.string(),
+        amount:z.number(), 
+        category:z.string(), 
+        type:z.string()
 
     })
     console.log("Dados recebidos:", req.body)
@@ -15,9 +19,9 @@ export async function createCategoryController(req:Request, res:Response){
     const user_id = req.user.id
 
     try {
-            const {name} = registerBodySchema.parse(req.body)
+            const {name, amount, category, type} = registerBodySchema.parse(req.body)
 
-        await CreateCategoryUseCase({name, user_id})
+        await CreateTransactionUseCase({name, user_id, amount, category, type})
     } catch (err) {
         if(err instanceof ResourceNotFoundError){
             return res.status(404).send()

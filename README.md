@@ -31,4 +31,4 @@
 - [x] A senha do usuário precisa estar hasheada;
 - [x] Os dados da aplicação precisam estar persistidos em um banco de dados PortgresSQL;
 - [ ] Todas as listas de dados precisam estar paginadas com 10 itens por página;
-- [ ] O usuário deve ser identificado por um JWT (JSON Web Token);
+- [x] O usuário deve ser identificado por um JWT (JSON Web Token);

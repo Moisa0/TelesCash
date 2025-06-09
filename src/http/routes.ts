@@ -6,6 +6,7 @@ import { env } from '../env';
 import { authenticationController } from './controllers/authentication-controller';
 import { getUserProfileController } from './controllers/get-user-profile-controller';
 import { authenticationMiddleware } from '../middlewares/authenticationMid';
+import { createTransactionController } from './controllers/create-transaction-controller';
 
 const router = Router()
 
@@ -15,8 +16,15 @@ const router = Router()
 router.post('/register', registerController)
 router.post('/login', authenticationController)
 
+
+
+router.post('/transaction',createTransactionController)
+
 //AUTHENTICATION
 router.use(authenticationMiddleware)
+
+
+
 
 //AUTHENTICATION REQUIRED ROUTES
 router.post('/category',createCategoryController)
