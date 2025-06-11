@@ -1,12 +1,5 @@
-import { z } from "zod"
 import { Request, Response } from "express"
-import jwt from "jsonwebtoken"
-import { UnauthorizedError } from "../../use-cases/errors/unauthorized-error"
-import { env } from "../../env"
-import { prisma } from "../../lib/prisma"
-import { InvalidCredentialsError } from "../../use-cases/errors/invalid-credentials-error"
 import { UserAlreadyExistsError } from "../../use-cases/errors/user-already-exists-error"
-import { registerUseCase } from "../../use-cases/register"
 
 
 
