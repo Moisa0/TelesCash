@@ -5,7 +5,7 @@ import { CategoryDoesNotExistsError } from "./errors/category-does-not-exists-er
 import { TransactionTypeError } from "./errors/transaction-type-error";
 
 
-interface CreateTransactionUseCase{
+interface CreateTransactionUseCaseRequest{
 
     name: string;
     amount: number;
@@ -19,7 +19,7 @@ interface CreateTransactionUseCase{
     transactions: Transaction
 }
 
-export async function CreateTransactionUseCase({name, amount, category, type, user_id}:CreateTransactionUseCase){
+export async function CreateTransactionUseCase({name, amount, category, type, user_id}:CreateTransactionUseCaseRequest){
 
 
 

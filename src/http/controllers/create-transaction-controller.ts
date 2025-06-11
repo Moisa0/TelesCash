@@ -22,7 +22,7 @@ export async function createTransactionController(req:Request, res:Response){
     try {
             const {name, amount, category, type} = registerBodySchema.parse(req.body)
 
-        await CreateTransactionUseCase({name, user_id, amount, category, type})
+        await CreateTransactionUseCase({name, user_id, amount, category, type: type as "credito" | "debito"})
     } catch (err) {
         if(err instanceof ResourceNotFoundError){
             return res.status(404).json({ message: err.message })
