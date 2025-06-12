@@ -36,8 +36,11 @@ export async function GetTransactionsUseCase({user_id}:GetTransactionRequest){
             user_id
         }
     })
+
+    const transactions = transactionsFound.map(({ id, user_id, ...rest }) => rest);
+    console.log(transactions)
     
         return{
-            transactionsFound
+            transactions
         }
 }

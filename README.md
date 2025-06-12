@@ -7,8 +7,8 @@
 - [x] Deve ser possível se autenticar;
 - [x] Deve ser possível ( logado ) exibir o próprio perfil;
 - [x] Deve ser possível ( logado ) criar categorias (alimentação, transporte, internet...);
-- [ ] Deve ser possível ( logado ) cadastrar uma transação;
-- [ ] Deve ser possível ( logado ) listar as transações;
+- [x] Deve ser possível ( logado ) cadastrar uma transação;
+- [x] Deve ser possível ( logado ) listar as transações;
 - [ ] Deve ser possível ( logado ) listar as transações por categorias (alimentação, transporte, internet...);
 - [ ] Deve ser possível ( logado ) listar as transações por tipo (despesa ou crédito);
 - [ ] Deve ser possível ( logado ) exibir valor do saldo atual;
@@ -20,9 +20,9 @@
 ## RNs (Regras de negócio - Quais condições o usuário poderá fazer a ação na aplicação)
 
 - [x] O usuário não deve poder se cadastrar com um e-mail duplicado;
-- [ ] Um usuario não pode excluir outro usuario;
-- [ ] Um usuário não pode cadastrar uma transação sem categoria;
-- [ ] Um usuário não pode criar cadastrar uma transação sem tipo;
+- [x] Um usuario não pode excluir outro usuario;
+- [x] Um usuário não pode cadastrar uma transação sem categoria;
+- [x] Um usuário não pode criar cadastrar uma transação sem tipo;
 
 
 

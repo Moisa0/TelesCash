@@ -7,6 +7,7 @@ import { authenticationController } from './controllers/authentication-controlle
 import { getUserProfileController } from './controllers/get-user-profile-controller';
 import { authenticationMiddleware } from '../middlewares/authenticationMid';
 import { createTransactionController } from './controllers/create-transaction-controller';
+import { getTransactionsController } from './controllers/get-transactions-controller';
 
 const router = Router()
 
@@ -30,6 +31,7 @@ router.use(authenticationMiddleware)
 router.post('/category',createCategoryController)
 router.get('/me', getUserProfileController)
 router.post('/transaction',createTransactionController)
+router.get('/transaction',getTransactionsController)
 
 export default router
 

@@ -5,6 +5,7 @@ import { GetTransactionsUseCase } from "../../use-cases/get-transactions"
 
 
 
+
 export async function getTransactionsController(req:Request, res:Response){
 
         //PEGA O ID DO USUÁRIO LOGADO
@@ -12,8 +13,9 @@ export async function getTransactionsController(req:Request, res:Response){
 
     try {
 
-        await GetTransactionsUseCase({user_id})
+        const transactions = await GetTransactionsUseCase({user_id})
 
+        return res.json(transactions.transactions)
         
     } catch (err) {
         if(err instanceof UserAlreadyExistsError){
@@ -23,6 +25,6 @@ export async function getTransactionsController(req:Request, res:Response){
     }
 
 
-     
+
     
 }
