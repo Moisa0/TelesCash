@@ -8,11 +8,11 @@
 - [x] Deve ser possível ( logado ) exibir o próprio perfil;
 - [x] Deve ser possível ( logado ) criar categorias (alimentação, transporte, internet...);
 - [x] Deve ser possível ( logado ) listar as categorias criadas;
+- [x] Deve ser possível excluir uma categoria;
 - [x] Deve ser possível ( logado ) cadastrar uma transação;
 - [x] Deve ser possível ( logado ) listar as transações;
 - [x] Deve ser possível ( logado ) listar as transações por categorias (alimentação, transporte, internet...);
-- [x] Deve ser possível ( logado ) listar as transações por tipo (despesa ou crédito);
-- [ ] (ADMIN) Deve ser possível excluir um usuário;
+- [ ] Deve ser possível ( logado ) listar as transações por tipo (despesa ou crédito);
 
 
 
@@ -32,3 +32,10 @@
 - [x] Os dados da aplicação precisam estar persistidos em um banco de dados PortgresSQL;
 - [ ] Todas as listas de dados precisam estar paginadas com 10 itens por página;
 - [x] O usuário deve ser identificado por um JWT (JSON Web Token);
+
+
+
+LEMBRETES: 
+-Alterar os nomes dos schemas zods dos controllers
+-Melhorar as validações dos use-cases
+-Passar todos os use-cases-erros para os controllers

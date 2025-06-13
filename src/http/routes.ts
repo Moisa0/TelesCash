@@ -7,6 +7,7 @@ import { authenticationMiddleware } from '../middlewares/authenticationMid';
 import { createTransactionController } from './controllers/create-transaction-controller';
 import { getTransactionsController } from './controllers/get-transactions';
 import { getCategoriesController } from './controllers/get-categories';
+import { DeleteCategoriesController } from './controllers/delete-category-controller';
 
 const router = Router()
 
@@ -27,11 +28,15 @@ router.use(authenticationMiddleware)
 
 
 //AUTHENTICATION REQUIRED ROUTES
-router.post('/category',createCategoryController)
 router.get('/me', getUserProfileController)
+
+router.post('/category',createCategoryController)
+router.get('/category',getCategoriesController)
+router.delete('/category/:name',DeleteCategoriesController)
+
 router.post('/transaction',createTransactionController)
 router.get('/transaction',getTransactionsController)
-router.get('/category',getCategoriesController)
+
 
 export default router
 
