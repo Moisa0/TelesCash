@@ -1,13 +1,13 @@
 import { Transaction, Type } from "@prisma/client";
 import { prisma } from "../lib/prisma";
 import { ResourceNotFoundError } from "./errors/resource-not-found-error";
-import { CategoryDoesNotExistsError } from "./errors/category-does-not-exists-error";
-import { TransactionTypeError } from "./errors/transaction-type-error";
 
 
-interface GetTransactionRequest{
+interface GetTransactionsRequest{
 
     user_id:string;
+
+    category?: string;
 
 }
 
@@ -15,7 +15,7 @@ interface GetTransactionsUseCase{
     transactions: Transaction
 }
 
-export async function GetTransactionsUseCase({user_id}:GetTransactionRequest){
+export async function GetTransactionsUseCase({user_id, category}:GetTransactionsRequest){
 
 
 
@@ -30,17 +30,41 @@ export async function GetTransactionsUseCase({user_id}:GetTransactionRequest){
         throw new ResourceNotFoundError()
     }
 
-    //ENCONTRAR TRANSAÇÕES PELO ID DO USUÁRIO
-    const transactionsFound = await prisma.transaction.findMany({
-        where:{
-            user_id
-        }
-    })
+    if(category){
+        //ENCONTRAR TRANSAÇÕES PELO ID DO USUÁRIO
+        const transactionsFound = await prisma.transaction.findMany({
+            where:{
+                user_id,
+                category
+            }
+        })
 
-    const transactions = transactionsFound.map(({ id, user_id, ...rest }) => rest);
-    console.log(transactions)
+        const transactions = transactionsFound.map(({ id, user_id, ...rest }) => rest);
+        console.log(transactions)
     
         return{
             transactions
         }
+    }
+
+
+
+    
+        const transactionsFound = await prisma.transaction.findMany({
+            where:{
+                user_id
+            }
+        })
+
+        const transactions = transactionsFound.map(({ id, user_id, ...rest }) => rest);
+        console.log(transactions)
+    
+        return{
+            transactions
+        }
+
+
+
+
+
 }
