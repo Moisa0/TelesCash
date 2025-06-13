@@ -7,11 +7,11 @@
 - [x] Deve ser possível se autenticar;
 - [x] Deve ser possível ( logado ) exibir o próprio perfil;
 - [x] Deve ser possível ( logado ) criar categorias (alimentação, transporte, internet...);
+- [x] Deve ser possível ( logado ) listar as categorias criadas;
 - [x] Deve ser possível ( logado ) cadastrar uma transação;
 - [x] Deve ser possível ( logado ) listar as transações;
-- [ ] Deve ser possível ( logado ) listar as transações por categorias (alimentação, transporte, internet...);
-- [ ] Deve ser possível ( logado ) listar as transações por tipo (despesa ou crédito);
-- [ ] Deve ser possível ( logado ) exibir valor do saldo atual;
+- [x] Deve ser possível ( logado ) listar as transações por categorias (alimentação, transporte, internet...);
+- [x] Deve ser possível ( logado ) listar as transações por tipo (despesa ou crédito);
 - [ ] (ADMIN) Deve ser possível excluir um usuário;
 
 
